@@ -167,6 +167,8 @@ class KeyBERT:
                 candidate_embeddings = word_embeddings[candidate_indices]
                 doc_embedding = doc_embeddings[index].reshape(1, -1)
 
+                print(candidate_embeddings.shape, doc_embedding.shape)
+
                 # Guided KeyBERT with seed keywords
                 if seed_keywords is not None:
                     seed_embeddings = self.model.embed([" ".join(seed_keywords)])
