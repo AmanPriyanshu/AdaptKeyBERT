@@ -10,7 +10,12 @@ doc = """
          which can be used for mapping new examples. An optimal scenario will allow for the
          algorithm to correctly determine the class labels for unseen instances. This requires
          the learning algorithm to generalize from the training data to unseen situations in a
-         'reasonable' way (see inductive bias).
+         'reasonable' way (see inductive bias). But then what about supervision and unsupervision, what happens to unsupervised learning.
       """
 kw_model = KeyBERT()
-keywords = kw_model.extract_keywords(doc)
+keywords = kw_model.extract_keywords(doc, top_n=10)
+print(keywords)
+kw_model = KeyBERT(domain_adapt=True)
+kw_model.pre_train([doc], [['supervised', 'unsupervised']], lr=1e-3)
+keywords = kw_model.extract_keywords(doc, top_n=10)
+print(keywords)
