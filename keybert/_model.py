@@ -35,7 +35,7 @@ class KeyBERT:
     best describe the entire document.
     """
 
-    def __init__(self, model="all-MiniLM-L6-v2", domain_adapt=False):
+    def __init__(self, model="all-MiniLM-L6-v2", domain_adapt=False, zero_adapt=False):
         """KeyBERT initialization
 
         Arguments:
@@ -53,9 +53,40 @@ class KeyBERT:
         """
         self.model = select_backend(model)
         self.domain_adapt = domain_adapt
+        self.zero_adapt = zero_adapt
         if self.domain_adapt:
             self.attention_layer = None
             self.target_keywords = []
+        if self.zero_adapt:
+            self.domain_words = None
+            self.domain_word_embeddings = None
+            self.adaptive_thr = 0.0
+
+    def zeroshot_pre_train(
+        self,
+        domain_words: List[str],
+        adaptive_thr: float = 0.15,
+        minimal_similarity_zeroshot: float = 0.8,
+        ):
+        if not self.zero_adapt:
+            raise Exception("Can be only pre-trained when zero_adapt is True!")
+        self.domain_words = domain_words
+        self.domain_word_embeddings = self.model.embed(self.domain_words)
+        self.minimal_similarity_zeroshot = minimal_similarity_zeroshot
+        self.adaptive_thr = adaptive_thr
+
+    def apply_zero_adaptation(self, candidate_embeddings, doc_embedding):
+        computed_embeddings = []
+        for candidate_embedding in candidate_embeddings:
+            candidate_embedding = candidate_embedding.reshape(1, -1)
+            max_similarity = np.max(cosine_similarity(candidate_embedding, self.domain_word_embeddings))
+            if max_similarity<self.minimal_similarity_zeroshot:
+                computed_embeddings.append(candidate_embedding[0])
+            else:
+                temp_embedding = (1-self.adaptive_thr*max_similarity)*candidate_embedding+self.adaptive_thr*max_similarity*doc_embedding
+                computed_embeddings.append(temp_embedding[0])
+        computed_embeddings = np.stack(computed_embeddings)
+        return computed_embeddings
 
     def pre_train(
         self,
@@ -140,8 +171,9 @@ class KeyBERT:
                         gen_og_dist_score = torch.tensordot(candidate_embeddings_pt, doc_embeddings_pt.transpose(0, 1), dims=1)
                         target_embedding_ = self.attention_layer(target_embedding_pt, target_word_embeddings_pt)
                         target_dist_score = torch.tensordot(target_embedding_, doc_embeddings_pt.transpose(0, 1), dims=1)
+                        doc_target_dist_score = torch.tensordot(doc_embeddings_pt, doc_embeddings_pt.transpose(0, 1), dims=1)
                         mse_gen = torch.mean((gen_og_dist_score-gen_dist_score)**2)
-                        mse_target = torch.mean((1-target_dist_score)**2)
+                        mse_target = torch.mean((doc_target_dist_score-target_dist_score)**2)
                         loss = mse_gen + 2*mse_target
                         loss.backward()
                         self.optimizer.step()
@@ -234,6 +266,12 @@ class KeyBERT:
                 return []
             else:
                 self.attention_layer.eval()
+
+        if self.zero_adapt:
+            if self.domain_words is None:
+                raise Exception("Zero-Shot Domain Adaptation must be pre-trained with domain words!!")
+                return []
+
         if isinstance(docs, str):
             if docs:
                 docs = [docs]
@@ -280,6 +318,8 @@ class KeyBERT:
                 if self.domain_adapt:
                     candidate_embeddings_ = self.attention_layer(candidate_embeddings_pt, self.target_word_embeddings_pt).detach().numpy()
                     candidate_embeddings = np.average([candidate_embeddings, candidate_embeddings_], axis=0, weights=[2, 1])
+                if self.zero_adapt:
+                    candidate_embeddings = self.apply_zero_adaptation(candidate_embeddings, doc_embedding)
 
                 # Guided KeyBERT with seed keywords
                 if seed_keywords is not None:
