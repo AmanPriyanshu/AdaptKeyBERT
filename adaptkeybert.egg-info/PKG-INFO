@@ -1,3 +1,35 @@
+Metadata-Version: 2.1
+Name: adaptkeybert
+Version: 0.0.1
+Summary: AdaptKeyBERT extended keyphrase extraction with zero-shot and few-shot semi-supervised domain adaptation.
+Home-page: https://github.com/AmanPriyanshu/AdaptKeyBERT
+Author: Aman Priyanshu
+Author-email: amanpriyanshusms2001@gmail.com
+Keywords: nlp bert keyword extraction embeddings zeroshot fewshot semisupervised
+Classifier: Programming Language :: Python
+Classifier: Intended Audience :: Science/Research
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Scientific/Engineering
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Provides-Extra: test
+Provides-Extra: docs
+Provides-Extra: dev
+Provides-Extra: flair
+Provides-Extra: spacy
+Provides-Extra: use
+Provides-Extra: gensim
+License-File: LICENSE
+
 <img src="https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/keybert_logo.png" width="35%" height="35%" align="right" />
 
 # AdaptKeyBERT
@@ -11,7 +43,7 @@ AdaptKeyBERT expands the aforementioned library by integrating semi-supervised a
 Take a look at `runner.py`
 
 ```py
-from adaptkeybert import KeyBERT
+from keybert import KeyBERT
 
 doc = """
          Supervised learning is the machine learning task of learning a function that
