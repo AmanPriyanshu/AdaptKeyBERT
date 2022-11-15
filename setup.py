@@ -37,7 +37,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="adaptkeybert",
     packages=find_packages(exclude=["notebooks", "docs"]),
-    version="0.0.1",
+    version="0.0.2",
     author="Aman Priyanshu",
     author_email="amanpriyanshusms2001@gmail.com",
     description="AdaptKeyBERT extended keyphrase extraction with zero-shot and few-shot semi-supervised domain adaptation.",

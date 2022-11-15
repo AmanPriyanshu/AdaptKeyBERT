@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: adaptkeybert
-Version: 0.0.1
+Version: 0.0.2
 Summary: AdaptKeyBERT extended keyphrase extraction with zero-shot and few-shot semi-supervised domain adaptation.
 Home-page: https://github.com/AmanPriyanshu/AdaptKeyBERT
 Author: Aman Priyanshu
@@ -43,7 +43,7 @@ AdaptKeyBERT expands the aforementioned library by integrating semi-supervised a
 Take a look at `runner.py`
 
 ```py
-from keybert import KeyBERT
+from adaptkeybert import KeyBERT
 
 doc = """
          Supervised learning is the machine learning task of learning a function that

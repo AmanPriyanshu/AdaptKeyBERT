@@ -6,7 +6,7 @@ from torch.utils.data import Dataset
 from sklearn.preprocessing import normalize
 from transformers.pipelines import Pipeline
 
-from keybert.backend import BaseEmbedder
+from adaptkeybert.backend import BaseEmbedder
 
 
 class HFTransformerBackend(BaseEmbedder):

@@ -2,7 +2,7 @@ import numpy as np
 from tqdm import tqdm
 from typing import List
 
-from keybert.backend import BaseEmbedder
+from adaptkeybert.backend import BaseEmbedder
 
 
 class USEBackend(BaseEmbedder):
