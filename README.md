@@ -6,6 +6,10 @@ KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages
 
 AdaptKeyBERT expands the aforementioned library by integrating semi-supervised attention for creating a few-shot domain adaptation technique for keyphrase extraction. Also extended the work by allowing zero-shot word seeding, allowing better performance on topic relevant documents
 
+## Installation:
+
+`pip install adaptkeybert`
+
 ## Basic Use:
 
 Take a look at `runner.py`
