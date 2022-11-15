@@ -1,4 +1,4 @@
-from keybert import KeyBERT
+from adaptkeybert import KeyBERT
 
 doc = """
          Supervised learning is the machine learning task of learning a function that
