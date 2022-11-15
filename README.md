@@ -1,9 +1,10 @@
-<img src="images/logo.png" width="35%" height="35%" align="right" />
+<img src="images/keybert_logo.png" width="35%" height="35%" align="right" />
 
-# KeyBERT
+# AdaptKeyBERT
 
-KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages BERT embeddings to
-create keywords and keyphrases that are most similar to a document.
+KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages BERT embeddings to create keywords and keyphrases that are most similar to a document.
+
+AdaptKeyBERT expands the aforementioned library by integrating semi-supervised attention for creating a few-shot domain adaptation technique for keyphrase extraction. Also extended the work by allowing zero-shot word seeding, allowing better performance on topic relevant documents
 
 ## Basic Use:
 
