@@ -1,4 +1,4 @@
-<img src="images/keybert_logo.png" width="35%" height="35%" align="right" />
+<img src="https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/keybert_logo.png" width="35%" height="35%" align="right" />
 
 # AdaptKeyBERT
 
