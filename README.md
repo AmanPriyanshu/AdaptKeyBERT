@@ -28,11 +28,25 @@ Datasets Used:
 
 ## Results: 
 
-![](https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/1.png)
-*AdaptKeyBERT performance on FAO-780 dataset with p%=10%.*
+Table: AdaptKeyBERT performance on FAO-780 dataset with p%=10%.
 
-![](https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/2.png)
-*AdaptKeyBERT performance on CERN-290 dataset with p%=10%.*
+| Model                | Precision | Recall | F-Score |
+|----------------------|--------------------|-----------------|------------------|
+| Benchmark            | 36.74              | 33.67           | 35.138           |
+| Zero-Shot            | 37.25              | 38.59           | 37.908           |
+| Few-Shot             | 40.03              | 39.1            | 39.559           |
+| Zero-Shot & Few-Shot | 40.02              | 39.86           | 39.938           |
+|                      |                    |                 |                  |
+
+
+Table: AdaptKeyBERT performance on CERN-290 dataset with p%=10%.
+
+| Model                | Precision | Recall | F-Score |
+|----------------------|-----------|--------|------------------|
+| Benchmark            | 24.74     | 26.58  | 25.627           |
+| Zero-Shot            | 27.35     | 25.9   | 26.605           |
+| Few-Shot             | 29        | 27.4   | 28.177           |
+| Zero-Shot & Few-Shot | 29.11     | 28.67  | 28.883           |
 
 
 ## Installation:
