@@ -6,6 +6,35 @@ KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages
 
 AdaptKeyBERT expands the aforementioned library by integrating semi-supervised attention for creating a few-shot domain adaptation technique for keyphrase extraction. Also extended the work by allowing zero-shot word seeding, allowing better performance on topic relevant documents
 
+# Our Aim:
+
+* We reconsider downstream training keyword extractors on varied domains by integrating pre-trained LLMs with Few-Shot and Zero-Shot paradigms for domain accommodation. We incorporate regularized attention based embedding reconstruction for domain attentive keyword extraction.
+
+* Demonstrate two experimental setting with the objectives of achieving high performance for **Few-Shot Domain Adaptation** & **Zero-Shot Domain Adaptation**. The experimental results on both objective benchmarks demonstrate that our framework outperforms the base/naive approaches.
+
+* We open source a python library (AdaptKeyBERT) for the construction of FSL/ZSL for keyword extraction models that employ LLMs directly integrated with the KeyBERT API. Allowing easy training, validation, and deployment of said models.
+
+
+# Our Pipeline:
+
+<img src="https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/flowcharts.png" align="center" />
+
+# Results: 
+
+Datasets Used: 
+
+* fao780 dataset (Food and Agriculture Organization) - 780 documents from the food and agriculture industry.
+* CERN-290 dataset - 290 high energy physics documents.
+
+## Results: 
+
+![](https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/1.png)
+*AdaptKeyBERT performance on FAO-780 dataset with p%=10%.*
+
+![](https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/2.png)
+*AdaptKeyBERT performance on CERN-290 dataset with p%=10%.*
+
+
 ## Installation:
 
 `pip install adaptkeybert`
@@ -53,3 +82,20 @@ keywords = kw_model.extract_keywords(doc, top_n=10)
 print(keywords)
 
 ```
+
+## [Cite This Work](https://arxiv.org/abs/2211.07499)
+
+[Link to the Manuscript](https://arxiv.org/abs/2211.07499)
+
+```
+@misc{https://doi.org/10.48550/arxiv.2211.07499,
+  doi = {10.48550/ARXIV.2211.07499},
+  url = {https://arxiv.org/abs/2211.07499},
+  author = {Priyanshu, Aman and Vijay, Supriti},
+  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {AdaptKeyBERT: An Attention-Based approach towards Few-Shot &amp; Zero-Shot Domain Adaptation of KeyBERT},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {Creative Commons Attribution 4.0 International}
+}
+``` 
