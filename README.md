@@ -96,20 +96,3 @@ keywords = kw_model.extract_keywords(doc, top_n=10)
 print(keywords)
 
 ```
-
-## [Cite This Work](https://arxiv.org/abs/2211.07499)
-
-[Link to the Manuscript](https://arxiv.org/abs/2211.07499)
-
-```
-@misc{https://doi.org/10.48550/arxiv.2211.07499,
-  doi = {10.48550/ARXIV.2211.07499},
-  url = {https://arxiv.org/abs/2211.07499},
-  author = {Priyanshu, Aman and Vijay, Supriti},
-  keywords = {Computation and Language (cs.CL), Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {AdaptKeyBERT: An Attention-Based approach towards Few-Shot &amp; Zero-Shot Domain Adaptation of KeyBERT},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {Creative Commons Attribution 4.0 International}
-}
-``` 
