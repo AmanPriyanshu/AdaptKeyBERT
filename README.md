@@ -2,6 +2,8 @@
 
 # AdaptKeyBERT
 
+**TLDR;** Keyword/keyphrase extraction with zero-shot and few-shot semi-supervised domain adaptation
+
 KeyBERT is a minimal and easy-to-use keyword extraction technique that leverages BERT embeddings to create keywords and keyphrases that are most similar to a document
 
 AdaptKeyBERT expands the aforementioned library by integrating semi-supervised attention for creating a few-shot domain adaptation technique for keyphrase extraction. Also extended the work by allowing zero-shot word seeding, allowing better performance on topic relevant documents
