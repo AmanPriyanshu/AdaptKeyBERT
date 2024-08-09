@@ -75,7 +75,7 @@ doc = """
          'reasonable' way (see inductive bias). But then what about supervision and unsupervision, what happens to unsupervised learning.
       """
 kw_model = KeyBERT()
-keywords = kw_model.extract_keywords(doc, top_n=10)
+keywords = kw_model.extract_keywords(doc, top_n=10) # Usage with candidates - kw_model.extract_keywords(sentence, candidates=candidates, stop_words=None, min_df=1)
 print(keywords)
 
 
