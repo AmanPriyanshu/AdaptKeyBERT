@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdaptKeyBERT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        header {
+            background: #8b0000;
+            color: #ffffff;
+            padding: 20px 0;
+            min-height: 70px;
+            border-bottom: 3px solid #ff4500;
+            border-radius: 0 0 20px 20px;
+            position: relative;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #ff4500;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .button {
+            background: #ff4500;
+            padding: 10px 15px;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background: #ff6347;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .content {
+            background: #2b2b2b;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+        th {
+            background-color: #8b0000;
+            color: white;
+        }
+        tr:hover {
+            background-color: #333;
+        }
+        .demo-container {
+            background: #2b2b2b;
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 20px;
+        }
+        #demo-text {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            background: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        #keywords {
+            margin-top: 20px;
+        }
+        .keyword {
+            display: inline-block;
+            background: #ff4500;
+            color: #ffffff;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+        .keyword:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AdaptKeyBERT</h1>
+            <nav>
+                <a href="#" class="button">My Website</a>
+                <a href="#" class="button">My Blog</a>
+            </nav>
+            <div class="logo">
+                <img src="https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/keybert_logo.png" alt="AdaptKeyBERT Logo">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>TLDR</h2>
+            <p><em>Keyword/keyphrase extraction with zero-shot and few-shot semi-supervised domain adaptation.</em></p>
+            
+            <h2>About AdaptKeyBERT</h2>
+            <p>AdaptKeyBERT expands on KeyBERT by integrating semi-supervised attention for creating a few-shot domain adaptation technique for keyphrase extraction. It also extends the work by allowing zero-shot word seeding, enabling better performance on topic-relevant documents.</p>
+            
+            <h2>Our Aim</h2>
+            <ul>
+                <li>Reconsider downstream training keyword extractors on varied domains by integrating pre-trained LLMs with Few-Shot and Zero-Shot paradigms for domain accommodation.</li>
+                <li>Demonstrate two experimental settings with the objectives of achieving high performance for Few-Shot Domain Adaptation & Zero-Shot Domain Adaptation.</li>
+                <li>Open source a Python library (AdaptKeyBERT) for the construction of FSL/ZSL for keyword extraction models that employ LLMs directly integrated with the KeyBERT API.</li>
+            </ul>
+            
+            <h2>Our Pipeline</h2>
+            <img src="https://github.com/AmanPriyanshu/AdaptKeyBERT/blob/master/images/flowcharts.png" alt="AdaptKeyBERT Pipeline">
+            
+            <h2>Results</h2>
+            <h3>FAO-780 Dataset (p%=10%)</h3>
+            <table>
+                <tr>
+                    <th>Model</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F-Score</th>
+                </tr>
+                <tr>
+                    <td>Benchmark</td>
+                    <td>36.74</td>
+                    <td>33.67</td>
+                    <td>35.138</td>
+                </tr>
+                <tr>
+                    <td>Zero-Shot</td>
+                    <td>37.25</td>
+                    <td>38.59</td>
+                    <td>37.908</td>
+                </tr>
+                <tr>
+                    <td>Few-Shot</td>
+                    <td>40.03</td>
+                    <td>39.1</td>
+                    <td>39.559</td>
+                </tr>
+                <tr>
+                    <td>Zero-Shot & Few-Shot</td>
+                    <td>40.02</td>
+                    <td>39.86</td>
+                    <td>39.938</td>
+                </tr>
+            </table>
+            
+            <h3>CERN-290 Dataset (p%=10%)</h3>
+            <table>
+                <tr>
+                    <th>Model</th>
+                    <th>Precision</th>
+                    <th>Recall</th>
+                    <th>F-Score</th>
+                </tr>
+                <tr>
+                    <td>Benchmark</td>
+                    <td>24.74</td>
+                    <td>26.58</td>
+                    <td>25.627</td>
+                </tr>
+                <tr>
+                    <td>Zero-Shot</td>
+                    <td>27.35</td>
+                    <td>25.9</td>
+                    <td>26.605</td>
+                </tr>
+                <tr>
+                    <td>Few-Shot</td>
+                    <td>29.00</td>
+                    <td>27.4</td>
+                    <td>28.177</td>
+                </tr>
+                <tr>
+                    <td>Zero-Shot & Few-Shot</td>
+                    <td>29.11</td>
+                    <td>28.67</td>
+                    <td>28.883</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
